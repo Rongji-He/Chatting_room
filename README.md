@@ -1,5 +1,5 @@
 # Chatting_room
- Java Chatting room project using Socket, multiThread, and Servlet. 
+ Java Chatting room project using Socket, and multiThread. 
  
  To run the program, copy folder and build a new project from it. 
  
