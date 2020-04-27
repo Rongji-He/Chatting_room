@@ -30,6 +30,10 @@ public class Client {
 
     public void start(){
         try {
+            ServerHandler sh = new ServerHandler(socket);
+            Thread thread = new Thread(sh);
+            thread.start();
+
             OutputStream os =socket.getOutputStream();
             OutputStreamWriter osw = new OutputStreamWriter(os, StandardCharsets.UTF_8);
             BufferedWriter bw = new BufferedWriter(osw);

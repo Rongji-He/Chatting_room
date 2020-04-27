@@ -1,6 +1,10 @@
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+
 
 /**
  * Server host
@@ -12,6 +16,8 @@ import java.net.Socket;
 public class Server {
 
     private ServerSocket server;
+
+    private List<PrintWriter> boardCast ;
     public Server() {
 
 
@@ -19,6 +25,7 @@ public class Server {
 
             System.out.println("Initializing server...");
             server=new ServerSocket(7007);
+            boardCast = new LinkedList<>();
             System.out.println("Server is ready.");
         } catch (IOException e) {
             e.printStackTrace();
@@ -31,9 +38,11 @@ public class Server {
                 Socket socket = server.accept();
 
                 System.out.println("One client has connected.");
-                ClientHandler ch = new ClientHandler(socket);
+
+                ClientHandler ch = new ClientHandler(socket, boardCast);
                 Thread thread = new Thread(ch);
                 thread.start();
+
 
             }
 
