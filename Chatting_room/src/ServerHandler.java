@@ -8,11 +8,11 @@ import java.nio.charset.StandardCharsets;
 public class ServerHandler implements Runnable{
 
     private Socket socket;
-
     public ServerHandler(Socket socket){
         this.socket =socket;
     }
 
+    //
     @Override
     public void run() {
         try{
