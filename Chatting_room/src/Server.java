@@ -26,17 +26,15 @@ public class Server {
     }
     public void start(){
         try {
-            System.out.println("Server is listening");
-            Socket socket = server.accept();
+            while (true) {
+                System.out.println("Server is listening");
+                Socket socket = server.accept();
 
-            System.out.println("One client has connected.");
+                System.out.println("One client has connected.");
+                ClientHandler ch = new ClientHandler(socket);
+                Thread thread = new Thread(ch);
+                thread.start();
 
-            InputStream is = socket.getInputStream();
-            InputStreamReader isr = new InputStreamReader(is);
-            BufferedReader br = new BufferedReader(isr);
-            String msg;
-            while((msg = br.readLine())!=null){
-                System.out.println(msg);
             }
 
 
